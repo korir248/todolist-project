@@ -1,53 +1,67 @@
 use yew::prelude::*;
 
 
-struct Todo{
+struct Book{
     id: u8,
-    name: String,
+    title: String,
+    author: String,
     completed: bool,
 }
 
-
+// #[derive(Properties)]
 #[function_component(App)]
  pub fn app() -> Html{
-    let todos: Vec<Todo> = vec![Todo{
-           id: 1,
-           name: String::from("Wash dishes"),
-           completed: true
-       },Todo{
+    let books: Vec<Book> = vec![Book{
+        id: 1,
+        author: "George R.R. Martin".to_string(),
+        title: "In The House of the Worm".to_string(),
+        completed: false
+    },Book{
         id: 2,
-        name: String::from("Cook supper"),
-        completed: false
-    },Todo{
+        title: "The Dark Soul of the Night".to_string(),
+        author: "Brian W. Aldiss".to_string(),
+        completed: true
+
+    },Book{
         id: 3,
-        name: String::from("learn rust"),
-        completed: false
-    },Todo{
+        title: "Seeing".to_string(),
+        author: "Harlan Ellison".to_string(),
+        completed: true
+    },Book{
         id: 4,
-        name: String::from("Watch a movie"),
+        title: "Predators".to_string(),
+        author: "Steven Utley".to_string(),
         completed: false
     }
        ];
-    let todos_comp = todos.iter().filter(|todo| todo.completed == true).map(|todo| html! {
+
+    let books_comp = books.iter().filter(|book| book.completed == true).map(|book| html! {
         <>
-        <ul> {format!("Id: {}  name: {}",todo.id, todo.name)}</ul> <Button/>
+        
+        <li>{ format!("Title: {}",book.title)}</li>
+        <li>{ format!("Author: {}", book.author)}</li>
+      <Button />
         </>
     }).collect::<Html>();
-    let todos_incomp = todos.iter().filter(|todo| todo.completed == false).map(|todo| html! {
+
+
+    let books_incomp = books.iter().filter(|book| book.completed == false).map(|book| html! {
         <>
-        <ul> {format!("Id: {}  name:{}",todo.id, todo.name)}</ul> <Button/>
+        <ul> {format!("Id: {}  title:{} author: {}",book.id, book.title,book.author)}</ul> <Button/>
         </>
 
     }).collect::<Html>();
+
+    
     html! {
         <>
         <div>
-        <h3> { "Completed Todos"} </h3>
-        <p> { todos_comp }</p> 
+        <h3> { "Completed books"} </h3>
+        <p> { books_comp }</p> 
         </div>
         <div>
-        <h3> { "Incomplete Todos"} </h3>
-        <p> { todos_incomp }</p> 
+        <h3> { "Incomplete books"} </h3>
+        <p> { books_incomp }</p> 
         </div>
         </>
     }
