@@ -15,7 +15,7 @@ struct Book{
         id: 1,
         author: "George R.R. Martin".to_string(),
         title: "In The House of the Worm".to_string(),
-        completed: false
+        completed: true
     },Book{
         id: 2,
         title: "The Dark Soul of the Night".to_string(),
@@ -32,6 +32,12 @@ struct Book{
         title: "Predators".to_string(),
         author: "Steven Utley".to_string(),
         completed: false
+    },Book {
+        id: 5,
+        title: "The Remmmitance Man".to_string(),
+        author: "Cherry Wilder".to_string(),
+        completed: false
+
     }
        ];
 
